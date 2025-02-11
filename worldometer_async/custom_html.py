@@ -18,7 +18,7 @@ class HTML(HTML):
         script: str = None,
         wait: float = 0.2,
         scrolldown=False,
-        sleep: int = 0,
+        sleep: float = 0.5,
         reload: bool = True,
         timeout: Union[float, int] = 8.0,
         keep_page: bool = False,

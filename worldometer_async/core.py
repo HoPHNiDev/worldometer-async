@@ -183,7 +183,6 @@ class Worldometer(object):
 
     async def __aenter__(self) -> "Worldometer":
         """Initializer of Worldometer class asynchronously."""
-        # print(self.async_usage)
         if getattr(self, "_metrics", None) is not None and not self.async_usage:
             raise Exception("Set async_usage parameter on init to use asynchronously")
         elif getattr(self, "_metrics", None) is None:
