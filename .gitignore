@@ -288,3 +288,4 @@ pip-selfcheck.json
 test.py
 .pytest_cache
 .github
+.DS_Store

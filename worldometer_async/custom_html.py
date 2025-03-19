@@ -9,6 +9,7 @@ from requests_html import (
     AsyncHTMLSession,
 )
 from typing import Union
+import pyppeteer
 
 
 class HTML(HTML):
@@ -86,6 +87,18 @@ class BaseSession(BaseSession):
         if not response.encoding:
             response.encoding = DEFAULT_ENCODING
         return HTMLResponse._from_response(response, self)
+
+    @property
+    async def browser(self, ex_path: str = "/usr/bin/google-chrome"):
+        if not hasattr(self, "_browser"):
+            self._browser = await pyppeteer.launch(
+                ignoreHTTPSErrors=not (self.verify),
+                headless=True,
+                args=self.__browser_args,
+                executablePath=ex_path,
+            )
+
+        return self._browser
 
 
 class HTMLSession(HTMLSession, BaseSession): ...
